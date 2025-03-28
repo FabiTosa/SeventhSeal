@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, SafeAreaView } from 'react-native'
 import React from 'react'
 import CustomHeader from '../../../components/CustomHeader'
 
-export default function home() {
+export default function newarrivals() {
   return (
     <SafeAreaView style={styles.main}>
       <CustomHeader />
@@ -12,9 +12,5 @@ export default function home() {
 }
 
 const styles = StyleSheet.create({
-  main: {
-    backgroundColor: 'white',
-    flex: 1,
-    justifyContent: 'center'
-  }
+
 })

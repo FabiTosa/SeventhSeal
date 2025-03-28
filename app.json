@@ -23,6 +23,14 @@
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "./assets/fonts/Anton-Regular.ttf"
+          ]
+        }
+      ],
       "expo-router",
       [
         "expo-splash-screen",

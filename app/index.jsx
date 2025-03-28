@@ -1,5 +1,5 @@
 import { useRouter } from 'expo-router'
-import { StyleSheet, Text, View,  Pressable, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 
 
 
@@ -9,7 +9,7 @@ export default function Index() {
 
   return (
     <View style={styles.view}>
-      <TouchableOpacity style={styles.button} onPress={() => router.replace("/screens/uppertabs/stock")}>
+      <TouchableOpacity style={styles.button} onPress={() => router.replace("/screens/tabs/home")}>
         <Text style={styles.buttonText}>GO TO THE APP</Text>
       </TouchableOpacity>
     </View>

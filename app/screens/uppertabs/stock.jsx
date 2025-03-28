@@ -1,5 +1,6 @@
-import { StyleSheet, Text, SafeAreaView, View, FlatList, Image, ScrollView } from 'react-native'
+import { StyleSheet, Text, SafeAreaView, View, FlatList, Image, ScrollView, TouchableOpacity } from 'react-native'
 import React from 'react'
+import { Link } from 'expo-router';
 import clothing from "../../clothing.js";
 import CustomHeader from '../../../components/CustomHeader.jsx';
 
@@ -12,18 +13,20 @@ export default function Stock() {
         <View style={styles.itemCard}>
           <FlatList
             data={clothing}
-            keyExtractor={(item) => item.id}
+            keyExtractor={(item) => item.id.toString()}
             numColumns={2}
             contentContainerStyle={{ paddingBottom: 20 }} // Extra ruimte onderaan
             scrollEnabled={false} // Laat ScrollView het scrollen regelen
             renderItem={({ item }) => (
-              <View style={styles.card}>
-                <Image source={item.image} style={styles.image} />
-                <View style={styles.text}>
-                  <Text style={styles.Anton}>{item.price}</Text>
-                  <Text style={styles.PoppinsRegular}>{item.desc}</Text>
-                </View>
-              </View>
+              <Link href={`/screens/detailScreen?id=${item.id}`} asChild>
+                <TouchableOpacity style={styles.card}>
+                  <Image source={item.image} style={styles.image} />
+                  <View style={styles.text}>
+                    <Text style={styles.Anton}>{item.price}</Text>
+                    <Text style={styles.PoppinsRegular}>{item.desc}</Text>
+                  </View>
+                </TouchableOpacity>
+              </Link>
             )}
           />
         </View>
@@ -34,16 +37,15 @@ export default function Stock() {
 
 const styles = StyleSheet.create({
   Anton: {
-    fontFamily: "Anton-Regular",
     color: 'white',
     fontWeight: 'bold',
     fontSize: 20,
+    fontFamily: 'Anton-Regular'
   },
   PoppinsRegular: {
-    fontFamily: "Poppins-Regular",
     color: 'white',
     fontSize: 12,
-    fontWeight: 'thin',
+    fontFamily: 'Poppins'
   },
   main: {
     flex: 1,
@@ -54,9 +56,10 @@ const styles = StyleSheet.create({
   },
   titleText: {
     fontWeight: 'bold',
-    fontSize: 35,
+    fontSize: 50,
     textAlign: 'center',
     marginVertical: 10,
+    fontFamily: 'Anton-Regular'
   },
   itemCard: {
     flex: 1,

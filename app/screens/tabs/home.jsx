@@ -1,13 +1,16 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, SafeAreaView } from 'react-native'
 import React from 'react'
+import CustomHeader from '../../../components/CustomHeader'
 
-export default function home() {
+export default function Home() {
   return (
-    <View>
+    <SafeAreaView style={styles.main}>
       <CustomHeader />
-      <Text>home</Text>
-    </View>
+      <Text>Home</Text>
+    </SafeAreaView>
   )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+
+})

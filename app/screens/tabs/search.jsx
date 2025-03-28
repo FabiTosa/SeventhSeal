@@ -1,12 +1,16 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, SafeAreaView } from 'react-native'
 import React from 'react'
+import CustomHeader from '../../../components/CustomHeader'
 
-export default function search() {
+export default function Search() {
   return (
-    <View>
-      <Text>search</Text>
-    </View>
+    <SafeAreaView style={styles.main}>
+      <CustomHeader />
+      <Text>Search</Text>
+    </SafeAreaView>
   )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+
+})

@@ -13,6 +13,9 @@ export default function CustomHeader() {
 
             {/* Navigatiebalk */}
             <View style={styles.navbar}>
+                <TouchableOpacity onPress={() => router.push('/screens/uppertabs/home')}>
+                    <Text style={styles.link}>???</Text>
+                </TouchableOpacity>
                 <TouchableOpacity onPress={() => router.push('/screens/uppertabs/stock')}>
                     <Text style={styles.link}>IN STOCK</Text>
                 </TouchableOpacity>
@@ -52,8 +55,9 @@ const styles = StyleSheet.create({
         gap: 20,
     },
     link: {
-        fontSize: 16,
+        fontSize: 20,
         fontWeight: '600',
         color: '#333',
+        fontFamily: 'Anton-Regular'
     },
 });
