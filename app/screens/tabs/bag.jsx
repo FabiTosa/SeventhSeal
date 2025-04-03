@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, SafeAreaView, ScrollView, Image, TouchableOpacity, FlatList} from 'react-native'
+import { StyleSheet, Text, View, SafeAreaView, ScrollView, Image, TouchableOpacity, FlatList } from 'react-native'
 import React from 'react'
 import CustomHeader from '../../../components/CustomHeader'
 import { Link } from "expo-router";
@@ -17,22 +17,25 @@ export default function ShoppingCart() {
             contentContainerStyle={{ paddingBottom: 20 }}
             scrollEnabled={false}
             renderItem={({ item }) => (
-              <Link href={`/screens/detailScreen?id=${item.id}`} asChild>
-                <TouchableOpacity style={styles.card}>
-                  <Image source={item.image} style={styles.image} />
-                  <View style={styles.line}></View>
-                  <View style={styles.containerDetail}>
-                    <View style={styles.textContainer}>
-                      <Text style={styles.text1}>{item.price}</Text>
-                      <Text style={styles.text2}>COLOR: {item.color}</Text>
+              <View style={styles.card}>
+                <Link href={`/screens/detailScreen?id=${item.id}`} asChild>
+                  <TouchableOpacity style={styles.linkCard}>
+                    <Image source={item.image} style={styles.image} />
+                    <View style={styles.line}></View>
+                    <View style={styles.containerDetail}>
+                      <View style={styles.textContainer}>
+                        <Text style={styles.text1}>{item.price}</Text>
+                        <Text style={styles.text2}>COLOR: {item.color}</Text>
+                      </View>
+                      <View style={styles.valueContainer}>
+                        <Text style={styles.text3}>Value: </Text>
+                        <Text style={styles.text3}>Size: </Text>
+                      </View>
                     </View>
-                    <View style={styles.valueContainer}>
-                      <Text style={styles.text3}>Value: </Text>
-                      <Text style={styles.text3}>Size: </Text>
-                    </View>
-                  </View>
-                </TouchableOpacity>
-              </Link>
+                  </TouchableOpacity>
+                </Link>
+                <Image style={styles.trash} source={require("../../../assets/images/trash.png")} />
+              </View>
             )}
           />
         </View>
@@ -47,15 +50,23 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  titleText: {
+    textWeight: 'bold',
+    fontSize: 24
+  },
   card: {
     flexDirection: "row",
-    marginVertical: 10,
     borderTopWidth: 1,
     borderBottomWidth: 1,
     width: 365,
     borderColor: "#B7B7B7",
     alignItems: "center",
-    padding: 10
+    padding: 10,
+    marginVertical: 10,
+
+  },
+  linkCard: {
+    flexDirection: "row",
   },
   image: {
     height: 90,
@@ -72,7 +83,7 @@ const styles = StyleSheet.create({
   },
   text1: {
     fontFamily: 'Anton-Regular',
-    fontWeight: 'b old',
+    fontWeight: 'bold',
     fontSize: 16
   },
   text2: {
@@ -89,4 +100,9 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     gap: 50
   },
+  trash: {
+    position: 'absolute',
+    right: 0,
+    top: 15
+  }
 });
