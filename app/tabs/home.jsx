@@ -11,16 +11,15 @@ const Home = () => {
 
   return (
     <ScrollView style={{ flex: 1, backgroundColor: '#fff' }}>
-      {/* Welkomstbericht */}
+      
       <Text style={{ fontSize: 24, fontWeight: 'bold', margin: 20 }}>Welcome, {username}.</Text>
 
-      {/* Friday Sale Banner */}
       <View style={{ backgroundColor: 'red', padding: 20, alignItems: 'center' }}>
         <Text style={{ color: 'white', fontSize: 30, fontWeight: 'bold' }}>FRIDAY SALE</Text>
         <Text style={{ color: 'white', fontSize: 18 }}>ALL PIECES 15% OFF</Text>
       </View>
 
-      {/* Recently Viewed */}
+      
       <Text style={{ fontSize: 20, fontWeight: 'bold', margin: 20 }}>Recently Viewed</Text>
       <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ paddingHorizontal: 20 }}>
         {recentlyViewed.map((item) => (
