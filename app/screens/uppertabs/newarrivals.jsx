@@ -15,12 +15,10 @@ const newArrivals = () => {
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContent}>
-        {/* Logo */}
         <View style={styles.logoContainer}>
-          <Text style={styles.logo}>SEAT</Text>
+          <Text style={styles.logo}>7th Seal</Text>
         </View>
 
-        {/* Tabs (alleen tekst, geen functionaliteit) */}
         <View style={styles.tabContainer}>
           <Text style={styles.tab}>HOME</Text>
           <Text style={styles.tab}>IN STOCK</Text>

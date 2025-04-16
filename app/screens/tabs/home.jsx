@@ -4,13 +4,16 @@ import clothing from "../../clothing.js";
 
 const HomeScreen = () => {
     const handleItemClick = (item) => {
+
         console.log('Item clicked:', item);
+        
     };
 
     return (
         <ScrollView style={styles.container}>
+            {/* Header */}
             <View style={styles.header}>
-                <Text style={styles.logo}>STEAL</Text>
+                <Text style={styles.logo}>7th Seal</Text>
                 <View style={styles.navbar}>
                     <Text style={[styles.navItem, styles.activeNav]}>HOME</Text>
                     <Text style={styles.navItem}>IN STOCK</Text>
