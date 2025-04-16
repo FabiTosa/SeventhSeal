@@ -36,43 +36,6 @@ export default function Login() {
   });
 
   return (
-<<<<<<< Updated upstream
-    <ImageBackground
-    source={require('../../../assets/images/loginbg.png')}
-      style={styles.background}
-    >
-      <View style={styles.overlay}>
-        <Text style={styles.logo}>OffTrack</Text>
-        <View style={styles.inputContainer}>
-          <TextInput
-            style={styles.input}
-            placeholder="Email Address"
-            placeholderTextColor="#000"
-            value={email}
-            onChangeText={setEmail}
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="Password"
-            placeholderTextColor="#000"
-            secureTextEntry
-            value={password}
-            onChangeText={setPassword}
-          />
-        </View>
-        {error ? <Text style={styles.errorText}>{error}</Text> : null}
-        <TouchableOpacity style={styles.button} onPress={() => router.replace('/tabs/homeScreen')}>
-          <Text style={styles.buttonText}>LOG IN</Text>
-        </TouchableOpacity>
-        <Text style={styles.signInText}>
-          Already have an account?{' '}
-          <Text style={styles.signInLink} onPress={() => router.push('/auth/login')}>
-            Sign In
-          </Text>
-        </Text>
-      </View>
-    </ImageBackground>
-=======
     <Animated.View style={[StyleSheet.absoluteFillObject, animatedStyle]}>
       <ImageBackground
         source={require('../../../assets/images/sslogo 1.png')}
@@ -129,7 +92,6 @@ export default function Login() {
         </SafeAreaView>
       </ImageBackground>
     </Animated.View>
->>>>>>> Stashed changes
   );
 }
 

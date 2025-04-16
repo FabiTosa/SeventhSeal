@@ -1,6 +1,3 @@
-<<<<<<< Updated upstream
-import { View, Text, StyleSheet, Pressable, ImageBackground } from 'react-native';
-=======
 import {
   View,
   Text,
@@ -9,7 +6,6 @@ import {
   ImageBackground,
   SafeAreaView,
 } from 'react-native';
->>>>>>> Stashed changes
 import { useRouter } from 'expo-router';
 import React from 'react';
 import Animated, {
@@ -66,43 +62,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 20,
   },
-<<<<<<< Updated upstream
-  container: {
-    flex: 1,
-  },
-
-
-  logo: {
-    fontSize: 24,
-    fontWeight: "bold",
-    color: "white",
-    marginBottom: 350,
-    paddingRight: 220,
-  },
-
-  text: {
-    position: "absolute",
-    fontSize: 40,
-    color: "white",
-    fontWeight: "bold",
-    width: 229
-
-  },
-  button: {
-    position: "absolute",
-    backgroundColor: "black",
-    paddingVertical: 12,
-    paddingHorizontal: 25,
-    borderRadius: 10,
-    width: 200,
-    alignItems: "center",
-    height: 70,
-  },
-  buttonText: {
-    color: "white",
-    fontSize: 30,
-    fontWeight: "bold",
-=======
   logo: {
     fontSize: 36,
     fontWeight: 'bold',
@@ -127,6 +86,5 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'white',
     fontWeight: 'bold',
->>>>>>> Stashed changes
   },
 });
