@@ -1,11 +1,13 @@
 import { StyleSheet, Text, View, SafeAreaView, Image, TouchableOpacity, FlatList } from 'react-native'
 import React, { useEffect, useState } from 'react'
+import { useRouter } from 'expo-router'
 import CustomHeader from '../../../components/CustomHeader'
 import { Link } from "expo-router";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function ShoppingCart() {
   const [bag, setBag] = useState([]);
+  const router = useRouter()
 
   useEffect(() => {
     const fetchCart = async () => {
@@ -63,6 +65,25 @@ export default function ShoppingCart() {
           </>
         }
       />
+      <View style={styles.paycheckContainer}>
+        <View style={styles.payImages}>
+          <Image source={require("../../../assets/images/paypall.png")} />
+          <Image source={require("../../../assets/images/mastercard.png")} />
+          <Image source={require("../../../assets/images/ideal.png")} />
+        </View>
+        <View style={styles.horizontalline}>
+        </View>
+        <View style={styles.totalContainer}>
+          <Text style={styles.total}>TOTAL: €0,00</Text>
+          <Text style={styles.shipping}>Shipping Fee: €0,00</Text>
+        </View>
+      </View>
+      <TouchableOpacity style={styles.button} onPress={() => router.push("/screens/tabs/home")}>
+        <Text style={styles.buttonText}>SPEND AND LOOK FOR MORE</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.button}>
+        <Text style={styles.buttonText}>CHECK OUT »</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 }
@@ -99,6 +120,31 @@ const styles = StyleSheet.create({
   image: {
     height: 90,
     width: 125,
+  },
+  payImages: {
+    flex: 1,
+    flexDirection: 'row',
+    gap: 5,
+    marginLeft: 10,
+    marginBottom: 10
+  },
+  totalContainer: {
+    position: 'absolute',
+    right: 15
+  },
+  total: {
+    fontWeight: 800,
+    fontSize: 17
+  },
+  shipping: {
+    color: '#A5A5A5'
+  },
+  horizontalline: {
+    height: 1,
+    backgroundColor: 'black',
+    marginVertical: 20,
+    marginHorizontal: 10,
+    marginRight: 150
   },
   line: {
     height: 70,
@@ -137,5 +183,18 @@ const styles = StyleSheet.create({
   trash: {
     height: 15,
     width: 15
-  }
+  },
+  buttonText: {
+    color: 'white',
+    fontWeight: '800',
+    fontSize: 18,
+    textAlign: 'center'
+  },
+  button: {
+    backgroundColor: 'black',
+    paddingVertical: 12,
+    marginVertical: 5,
+    marginHorizontal: 10
+
+  },
 });
