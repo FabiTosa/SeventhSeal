@@ -3,14 +3,15 @@ import { View, Text, StyleSheet, Image, ScrollView, Dimensions } from 'react-nat
 
 const newArrivals = () => {
   const items = [
-    { id: 1, image: 'https://via.placeholder.com/150' },
-    { id: 2, image: 'https://via.placeholder.com/150' },
-    { id: 3, image: 'https://via.placeholder.com/150' },
-    { id: 4, image: 'https://via.placeholder.com/150' },
-    { id: 5, image: 'https://via.placeholder.com/150' },
-    { id: 6, image: 'https://via.placeholder.com/150' },
-    { id: 7, image: 'https://via.placeholder.com/150' },
+    { id: 1, image: require('../../../assets/images/hoodie2.png') },
+    { id: 2, image: require('../../../assets/images/hoodie1.png') },
+    { id: 3, image: require('../../../assets/images/pinkthee.png') },
+    { id: 4, image: require('../../../assets/images/sweater2.png') },
+    { id: 5, image: require('../../../assets/images/sweater.png') },
+    { id: 6, image: require('../../../assets/images/blackknitted.png') },
+    { id: 7, image: require('../../../assets/images/sweater3.png') },
   ];
+  
 
   return (
     <View style={styles.container}>
@@ -29,11 +30,12 @@ const newArrivals = () => {
         {/* Product grid */}
         <View style={styles.grid}>
           {items.map((item) => (
-            <Image
-              key={item.id}
-              source={{ uri: item.image }}
-              style={styles.imageBox}
-            />
+           <Image
+           key={item.id}
+           source={item.image}
+           style={styles.imageBox}
+         />
+         
           ))}
         </View>
 

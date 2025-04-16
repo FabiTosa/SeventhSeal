@@ -22,10 +22,10 @@ const HomeScreen = () => {
                 </View>
             </View>
 
-            {/* Welcome Text */}
+           
             <Text style={styles.welcome}>WELCOME, USER.</Text>
 
-            {/* Sale Banner */}
+           
             <View style={styles.saleBanner}>
                 <Text style={styles.saleText}>FRIDAY SALE</Text>
                 <Text style={styles.saleSubtext}>ALL PIECES 15% OFF</Text>
