@@ -7,29 +7,30 @@ import CustomHeader from '../../../components/CustomHeader.jsx';
 export default function Stock() {
   return (
     <SafeAreaView style={styles.main}>
-      <FlatList
-        data={clothing}
-        keyExtractor={(item) => item.id.toString()}
-        numColumns={2}
-        contentContainerStyle={styles.scrollContainer}
-        ListHeaderComponent={
-          <>
-            <CustomHeader />
-            <Text style={styles.titleText}>NEW RELEASES</Text>
-          </>
-        }
-        renderItem={({ item }) => (
-          <Link href={`/screens/detailScreen?id=${item.id}`} asChild>
-            <TouchableOpacity style={styles.card}>
-              <Image source={item.image} style={styles.image} />
-              <View style={styles.text}>
-                <Text style={styles.Anton}>{item.price}</Text>
-                <Text style={styles.PoppinsRegular}>{item.desc}</Text>
-              </View>
-            </TouchableOpacity>
-          </Link>
-        )}
-      />
+      <CustomHeader />
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <Text style={styles.titleText}>NEW RELEASES</Text>
+        <View style={styles.itemCard}>
+          <FlatList
+            data={clothing}
+            keyExtractor={(item) => item.id.toString()}
+            numColumns={2}
+            contentContainerStyle={{ paddingBottom: 20 }}
+            scrollEnabled={false} 
+            renderItem={({ item }) => (
+              <Link href={`/screens/detailScreen?id=${item.id}`} asChild>
+                <TouchableOpacity style={styles.card}>
+                  <Image source={item.image} style={styles.image} />
+                  <View style={styles.text}>
+                    <Text style={styles.Anton}>{item.price}</Text>
+                    <Text style={styles.PoppinsRegular}>{item.desc}</Text>
+                  </View>
+                </TouchableOpacity>
+              </Link>
+            )}
+          />
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }

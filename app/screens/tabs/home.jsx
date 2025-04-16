@@ -6,20 +6,28 @@ import { Link } from 'expo-router';
 
 const HomeScreen = () => {
     const handleItemClick = (item) => {
-        // Navigatie logica hier, bijvoorbeeld:
+
         console.log('Item clicked:', item);
-        // Hier kan je een navigatie functie aanroepen naar een detailpagina van het kledingstuk
+        
     };
 
     return (
         <ScrollView style={styles.container}>
             {/* Header */}
-            <CustomHeader />
+            <View style={styles.header}>
+                <Text style={styles.logo}>7th Seal</Text>
+                <View style={styles.navbar}>
+                    <Text style={[styles.navItem, styles.activeNav]}>HOME</Text>
+                    <Text style={styles.navItem}>IN STOCK</Text>
+                    <Text style={styles.navItem}>NEW ARRIVALS</Text>
+                    <Text style={styles.navItem}>INSPO PAGE</Text>
+                </View>
+            </View>
 
-            {/* Welcome Text */}
+           
             <Text style={styles.welcome}>WELCOME, USER.</Text>
 
-            {/* Sale Banner */}
+           
             <View style={styles.saleBanner}>
                 <Text style={styles.saleText}>FRIDAY SALE</Text>
                 <Text style={styles.saleSubtext}>ALL PIECES 15% OFF</Text>

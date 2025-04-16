@@ -4,12 +4,10 @@ import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Image } from 'rea
 const Profile = () => {
   return (
     <ScrollView style={styles.container}>
-      {/* Logo */}
       <View style={styles.logoContainer}>
         <Text style={styles.logo}>7TH SEAL</Text>
       </View>
 
-      {/* Profile Card */}
       <View style={styles.profileCard}>
         <View styles={styles.profileBox}>
           <View style={styles.profileImage}></View>
@@ -57,7 +55,6 @@ const Profile = () => {
         <Text style={styles.logoutText}>Edit personal info</Text>
       </TouchableOpacity>
 
-      {/* Footer Buttons */}
       <TouchableOpacity style={styles.footerBtn}>
         <Text style={styles.footerText}>Switch to <Text style={{ fontWeight: 'bold' }}>premium</Text></Text>
       </TouchableOpacity>
