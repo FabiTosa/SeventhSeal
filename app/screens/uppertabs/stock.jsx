@@ -1,4 +1,4 @@
-import { StyleSheet, Text, SafeAreaView, View, FlatList, Image, ScrollView, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, SafeAreaView, View, FlatList, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { Link } from 'expo-router';
 import clothing from "../../clothing.js";
@@ -7,30 +7,29 @@ import CustomHeader from '../../../components/CustomHeader.jsx';
 export default function Stock() {
   return (
     <SafeAreaView style={styles.main}>
-      <CustomHeader />
-      <ScrollView contentContainerStyle={styles.scrollContainer}>
-        <Text style={styles.titleText}>NEW RELEASES</Text>
-        <View style={styles.itemCard}>
-          <FlatList
-            data={clothing}
-            keyExtractor={(item) => item.id.toString()}
-            numColumns={2}
-            contentContainerStyle={{ paddingBottom: 20 }} // Extra ruimte onderaan
-            scrollEnabled={false} // Laat ScrollView het scrollen regelen
-            renderItem={({ item }) => (
-              <Link href={`/screens/detailScreen?id=${item.id}`} asChild>
-                <TouchableOpacity style={styles.card}>
-                  <Image source={item.image} style={styles.image} />
-                  <View style={styles.text}>
-                    <Text style={styles.Anton}>{item.price}</Text>
-                    <Text style={styles.PoppinsRegular}>{item.desc}</Text>
-                  </View>
-                </TouchableOpacity>
-              </Link>
-            )}
-          />
-        </View>
-      </ScrollView>
+      <FlatList
+        data={clothing}
+        keyExtractor={(item) => item.id.toString()}
+        numColumns={2}
+        contentContainerStyle={styles.scrollContainer}
+        ListHeaderComponent={
+          <>
+            <CustomHeader />
+            <Text style={styles.titleText}>NEW RELEASES</Text>
+          </>
+        }
+        renderItem={({ item }) => (
+          <Link href={`/screens/detailScreen?id=${item.id}`} asChild>
+            <TouchableOpacity style={styles.card}>
+              <Image source={item.image} style={styles.image} />
+              <View style={styles.text}>
+                <Text style={styles.Anton}>{item.price}</Text>
+                <Text style={styles.PoppinsRegular}>{item.desc}</Text>
+              </View>
+            </TouchableOpacity>
+          </Link>
+        )}
+      />
     </SafeAreaView>
   );
 }
@@ -45,14 +44,14 @@ const styles = StyleSheet.create({
   PoppinsRegular: {
     color: 'white',
     fontSize: 12,
-    fontFamily: 'Poppins'
   },
   main: {
     flex: 1,
     backgroundColor: 'white',
   },
   scrollContainer: {
-    paddingHorizontal: 12.5
+    paddingHorizontal: 12.5,
+    paddingBottom: 20,
   },
   titleText: {
     fontWeight: 'bold',
@@ -60,9 +59,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginVertical: 10,
     fontFamily: 'Anton-Regular'
-  },
-  itemCard: {
-    flex: 1,
   },
   card: {
     flex: 1,

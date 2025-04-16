@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Text, Image, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
 import clothing from "../../clothing.js";
+import CustomHeader from '../../../components/CustomHeader'
+import { Link } from 'expo-router';
 
 const HomeScreen = () => {
     const handleItemClick = (item) => {
@@ -12,15 +14,7 @@ const HomeScreen = () => {
     return (
         <ScrollView style={styles.container}>
             {/* Header */}
-            <View style={styles.header}>
-                <Text style={styles.logo}>STEAL</Text>
-                <View style={styles.navbar}>
-                    <Text style={[styles.navItem, styles.activeNav]}>HOME</Text>
-                    <Text style={styles.navItem}>IN STOCK</Text>
-                    <Text style={styles.navItem}>NEW ARRIVALS</Text>
-                    <Text style={styles.navItem}>INSPO PAGE</Text>
-                </View>
-            </View>
+            <CustomHeader />
 
             {/* Welcome Text */}
             <Text style={styles.welcome}>WELCOME, USER.</Text>
@@ -36,11 +30,13 @@ const HomeScreen = () => {
                 <Text style={styles.sectionTitle}>RECENTLY VIEWED</Text>
                 <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                     {clothing.slice(0, 4).map((item, index) => (
-                        <TouchableOpacity key={index} style={styles.productCard} onPress={() => handleItemClick(item)}>
-                            <Image source={item.image} style={styles.productImage} />
-                            <Text style={styles.productPrice}>{item.price}</Text>
-                            <Text style={styles.productName}>{item.desc}</Text>
-                        </TouchableOpacity>
+                        <Link href={`/screens/detailScreen?id=${item.id}`} asChild>
+                            <TouchableOpacity key={index} style={styles.productCard} onPress={() => handleItemClick(item)}>
+                                <Image source={item.image} style={styles.productImage} />
+                                <Text style={styles.productPrice}>{item.price}</Text>
+                                <Text style={styles.productName}>{item.desc}</Text>
+                            </TouchableOpacity>
+                        </Link>
                     ))}
                 </ScrollView>
             </View>
@@ -81,25 +77,25 @@ const styles = StyleSheet.create({
     productImage: { width: '100%', height: 120, borderRadius: 10 },
     productPrice: { fontSize: 16, fontWeight: 'bold' },
     productName: { fontSize: 14, color: '#555' },
-    upcomingDropsContainer: { 
-        padding: 20, 
-        backgroundColor: 'red', 
-        alignItems: 'center', 
+    upcomingDropsContainer: {
+        padding: 20,
+        backgroundColor: 'red',
+        alignItems: 'center',
         position: 'relative',
         overflow: 'hidden'
     },
-    textOverlayContainer: { 
-        position: 'absolute', 
-        width: '100%', 
-        height: '100%', 
+    textOverlayContainer: {
+        position: 'absolute',
+        width: '100%',
+        height: '100%',
         justifyContent: 'center',
         alignItems: 'center',
     },
-    upcomingText: { 
-        fontSize: 28, 
-        fontWeight: 'bold', 
-        color: 'black', 
-        opacity: 1, 
+    upcomingText: {
+        fontSize: 28,
+        fontWeight: 'bold',
+        color: 'black',
+        opacity: 1,
         transform: [{ rotate: '0deg' }],
     },
     mirroredText: {

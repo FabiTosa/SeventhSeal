@@ -1,30 +1,38 @@
 import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity, Image } from 'react-native'
-import { useEffect, UseEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'expo-router'
 import { useLocalSearchParams, useNavigation } from 'expo-router';
 import clothing from "../clothing.js";
 import CustomHeader from '../../components/CustomHeader.jsx';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function DetailScreen() {
 
   const router = useRouter()
   const { id } = useLocalSearchParams();
-  const navigation = useNavigation();
+  // const navigation = useNavigation();
   const item = clothing[id];
 
-  useEffect(() => {
-    if (item) {
-      navigation.setOptions({ title: item.title });
-    }
-  }, [item]);
+  const addToCart = async () => {
+    try {
+      const stored = await AsyncStorage.getItem('bag'); const bag = stored ? JSON.parse(stored) : []; bag.push(item);
+      await AsyncStorage.setItem('bag', JSON.stringify(bag)); router.push('/screens/tabs/bag');
+    } catch (error) { console.error('Fout bij toevoegen aan bag:', error); }
+  };
 
-  if (!item) {
-    return (
-      <View style={styles.container}>
-        <Text>Product not found!</Text>
-      </View>
-    );
-  }
+  // useEffect(() => {
+  //   if (item) {
+  //     navigation.setOptions({ title: item.title });
+  //   }
+  // }, [item]);
+
+  // if (!item) {
+  //   return (
+  //     <View style={styles.container}>
+  //       <Text>Product not found!</Text>
+  //     </View>
+  //   );
+  // }
 
   return (
     <SafeAreaView style={styles.main}>
@@ -42,7 +50,7 @@ export default function DetailScreen() {
             <Text style={styles.text}>{item.color}</Text>
             <Text style={styles.text2}>SIZE</Text>
           </View>
-          <TouchableOpacity style={styles.button} onPress={() => router.replace("/screens/tabs/bag")}>
+          <TouchableOpacity style={styles.button} onPress={addToCart}>
             <Text style={styles.textCart}>ADD TO SHOPPING CART</Text>
             <Text style={styles.bottomTextCart}>Just add it, broke ahhh..</Text>
           </TouchableOpacity>
@@ -120,7 +128,7 @@ const styles = StyleSheet.create({
     color: 'white',
     width: 375,
     padding: 6,
-    },
+  },
   textCart: {
     fontFamily: 'Anton-Regular',
     color: 'white',

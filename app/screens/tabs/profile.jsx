@@ -1,24 +1,31 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Image } from 'react-native';
 
 const Profile = () => {
   return (
     <ScrollView style={styles.container}>
       {/* Logo */}
       <View style={styles.logoContainer}>
-        <Text style={styles.logo}>7th Seal</Text>
+        <Text style={styles.logo}>7TH SEAL</Text>
       </View>
 
       {/* Profile Card */}
       <View style={styles.profileCard}>
-        <Text style={styles.username}>USERNAME</Text>
-        <Text style={styles.subText}>Premium member since 00/00/0000</Text>
-        <TouchableOpacity style={styles.editPicBtn}>
-          <Text style={styles.editPicText}>Edit picture</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.logoutBtn}>
-          <Text style={styles.logoutText}>Log out</Text>
-        </TouchableOpacity>
+        <View styles={styles.profileBox}>
+          <View style={styles.profileImage}></View>
+          <TouchableOpacity style={styles.editPicBtn}>
+            <Text style={styles.editPicText}>Edit picture</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.column}>
+          <Text style={styles.username}>USERNAME</Text>
+          <Text style={styles.subText}>Premium member since 00/00/0000</Text>
+          <View style={styles.positionButton}>
+            <TouchableOpacity style={styles.logoutBtn}>
+              <Text style={styles.logoutText}>Log out</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
       </View>
 
       {/* Profile Section */}
@@ -58,13 +65,23 @@ const Profile = () => {
       <TouchableOpacity style={styles.footerBtn}>
         <Text style={styles.footerText}>Settings</Text>
       </TouchableOpacity>
+      <View style={styles.divider} />
+      <View style={styles.aboutContainer}>
+        <Text style={styles.titleAbout}> About 7THSEAL</Text>
+        <Text style={styles.aboutText}>
+          7THSEAL offers streetwear and baggy styles designed for comfort and individuality. From bold looks to casual fits, we bring you the best of street culture.
+        </Text>
+        <View style={styles.imageContainer}>
+          <Image style={{ width: 190, height: 150 }} source={require('../../../assets/images/seventhseal.png')} />
+        </View>
+      </View>
     </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#111',
+    backgroundColor: '#171616',
     flex: 1,
     padding: 20,
   },
@@ -79,21 +96,36 @@ const styles = StyleSheet.create({
     letterSpacing: 4,
   },
   profileCard: {
+    flex: '1',
+    flexDirection: 'row',
     backgroundColor: '#222',
     padding: 20,
     borderRadius: 10,
     alignItems: 'center',
-    marginBottom: 30,
+    marginBottom: 15,
+    borderColor: 'black',
+    borderWidth: 2
+  },
+
+  profileImage: {
+    height: 100,
+    width: 100
+  },
+  column: {
+    display: 1,
+    flexDirection: 'column',
+    marginLeft: 20
   },
   username: {
+    bottom: 15,
     color: '#fff',
-    fontSize: 20,
+    fontSize: 25,
     fontWeight: 'bold',
   },
   subText: {
+    bottom: 15,
     color: '#aaa',
     fontSize: 12,
-    marginBottom: 10,
   },
   editPicBtn: {
     marginBottom: 10,
@@ -101,11 +133,16 @@ const styles = StyleSheet.create({
   editPicText: {
     color: '#bbb',
     textDecorationLine: 'underline',
+    textAlign: 'center'
+  },
+  positionButton: {
+    position: 'absolute',
+    right: 0,
+    marginTop: 60
   },
   logoutBtn: {
     backgroundColor: '#000',
-    borderColor: '#fff',
-    borderWidth: 1,
+    width: 90,
     paddingHorizontal: 20,
     paddingVertical: 8,
     borderRadius: 5,
@@ -117,12 +154,12 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 16,
     fontWeight: 'bold',
-    marginBottom: 5,
+    marginVertical: 10,
   },
   divider: {
     height: 1,
     backgroundColor: '#555',
-    marginBottom: 10,
+    marginVertical: 20,
   },
   box: {
     backgroundColor: '#333',
@@ -150,6 +187,28 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     alignSelf: 'flex-start',
     marginBottom: 30,
+  },
+  aboutContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 10,
+    marginBottom: 40,
+  },
+  titleAbout: {
+    color: "white",
+    textAlign: "center",
+    fontWeight: 700,
+    fontSize: 24,
+    marginBottom: 10,
+  },
+  aboutText: {
+    color: "white",
+    textAlign: "center",
+    marginBottom: 30
+  },
+  imageContainer: {
+    marginLeft: 30
   },
   footerBtn: {
     backgroundColor: '#333',

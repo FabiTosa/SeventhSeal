@@ -10,7 +10,7 @@ export default function _layout() {
 
       <Tabs.Screen name="bag" options={{ title: "", tabBarIcon: () => <Ionicons name='bag-outline' size='24' />, }} />
 
-      <Tabs.Screen name="homeScreen" options={{ title: "", tabBarIcon: () => <Ionicons name='home-outline' size='24' />, }} />
+      <Tabs.Screen name="home" options={{ title: "", tabBarIcon: () => <Ionicons name='home-outline' size='24' />, }} />
 
       <Tabs.Screen name="profile" options={{ title: "", tabBarIcon: () => <Ionicons name='person-outline' size='24' />, }} />
 

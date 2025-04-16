@@ -1,58 +1,86 @@
-import { StyleSheet, Text, View, SafeAreaView, ScrollView, Image, TouchableOpacity, FlatList } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View, SafeAreaView, Image, TouchableOpacity, FlatList } from 'react-native'
+import React, { useEffect, useState } from 'react'
 import CustomHeader from '../../../components/CustomHeader'
 import { Link } from "expo-router";
-import clothing from '../../clothing.js'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function ShoppingCart() {
+  const [bag, setBag] = useState([]);
+
+  useEffect(() => {
+    const fetchCart = async () => {
+      const data = await AsyncStorage.getItem('bag');
+      if (data) setBag(JSON.parse(data));
+    };
+    fetchCart();
+  }, []);
+
+  const handleRemoveItem = async (indexToRemove) => {
+    const updatedBag = bag.filter((_, index) => index !== indexToRemove);
+    setBag(updatedBag);
+    await AsyncStorage.setItem('bag', JSON.stringify(updatedBag));
+  };
+
+  const renderItem = ({ item, index }) => (
+    <View style={styles.card}>
+      <Link href={`/screens/detailScreen?id=${item.id}`} asChild>
+        <TouchableOpacity style={styles.linkCard}>
+          <Image source={item.image} style={styles.image} />
+          <View style={styles.line}></View>
+          <View style={styles.containerDetail}>
+            <View style={styles.textContainer}>
+              <Text style={styles.text1}>{item.price}</Text>
+              <Text style={styles.text2}>COLOR: {item.color}</Text>
+            </View>
+            <View style={styles.valueContainer}>
+              <Text style={styles.text3}>Value: </Text>
+              <Text style={styles.text3}>Size: </Text>
+            </View>
+          </View>
+        </TouchableOpacity>
+      </Link>
+
+      <TouchableOpacity
+        onPress={() => handleRemoveItem(index)}
+        style={styles.trashTouchable}
+      >
+        <Image style={styles.trash} source={require("../../../assets/images/trash.png")} />
+      </TouchableOpacity>
+    </View>
+  );
+
   return (
     <SafeAreaView style={styles.main}>
-      <CustomHeader />
-      <ScrollView contentContainerStyle={styles.scrollContainer}>
-        <Text style={styles.titleText}>CART</Text>
-        <View style={styles.itemCard}>
-          <FlatList
-            data={clothing}
-            keyExtractor={(item) => item.id.toString()}
-            contentContainerStyle={{ paddingBottom: 20 }}
-            scrollEnabled={false}
-            renderItem={({ item }) => (
-              <View style={styles.card}>
-                <Link href={`/screens/detailScreen?id=${item.id}`} asChild>
-                  <TouchableOpacity style={styles.linkCard}>
-                    <Image source={item.image} style={styles.image} />
-                    <View style={styles.line}></View>
-                    <View style={styles.containerDetail}>
-                      <View style={styles.textContainer}>
-                        <Text style={styles.text1}>{item.price}</Text>
-                        <Text style={styles.text2}>COLOR: {item.color}</Text>
-                      </View>
-                      <View style={styles.valueContainer}>
-                        <Text style={styles.text3}>Value: </Text>
-                        <Text style={styles.text3}>Size: </Text>
-                      </View>
-                    </View>
-                  </TouchableOpacity>
-                </Link>
-                <Image style={styles.trash} source={require("../../../assets/images/trash.png")} />
-              </View>
-            )}
-          />
-        </View>
-      </ScrollView>
+      <FlatList
+        data={bag}
+        keyExtractor={(item, index) => index.toString()}
+        renderItem={renderItem}
+        contentContainerStyle={styles.scrollContainer}
+        ListHeaderComponent={
+          <>
+            <CustomHeader />
+            <Text style={styles.titleText}>CART</Text>
+          </>
+        }
+      />
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   main: {
-    flexDirection: "column",
-    justifyContent: "center",
+    flex: 1,
+    backgroundColor: 'white',
+  },
+  scrollContainer: {
     alignItems: "center",
+    paddingBottom: 20
   },
   titleText: {
-    textWeight: 'bold',
-    fontSize: 24
+    fontWeight: 'bold',
+    fontSize: 24,
+    marginLeft: 20,
+    marginVertical: 10
   },
   card: {
     flexDirection: "row",
@@ -63,7 +91,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 10,
     marginVertical: 10,
-
+    position: 'relative'
   },
   linkCard: {
     flexDirection: "row",
@@ -78,9 +106,10 @@ const styles = StyleSheet.create({
     borderColor: "#B7B7B7",
     marginLeft: 10
   },
-  textContainer: {
+  containerDetail: {
     marginLeft: 20,
   },
+  textContainer: {},
   text1: {
     fontFamily: 'Anton-Regular',
     fontWeight: 'bold',
@@ -97,12 +126,16 @@ const styles = StyleSheet.create({
   },
   valueContainer: {
     flexDirection: "row",
-    marginLeft: 20,
     gap: 50
   },
-  trash: {
+  trashTouchable: {
     position: 'absolute',
     right: 0,
-    top: 15
+    top: 1,
+    padding: 10
+  },
+  trash: {
+    height: 15,
+    width: 15
   }
 });

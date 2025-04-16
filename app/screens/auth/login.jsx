@@ -42,7 +42,7 @@ export default function Register() {
           />
         </View>
         {error ? <Text style={styles.errorText}>{error}</Text> : null}
-        <TouchableOpacity style={styles.button} onPress={() => router.replace('../tabs/homeScreen')}>
+        <TouchableOpacity style={styles.button} onPress={() => router.replace('../tabs/home')}>
           <Text style={styles.buttonText}>LOG IN</Text>
         </TouchableOpacity>
         <Text style={styles.signInText}>
