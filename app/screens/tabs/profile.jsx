@@ -6,7 +6,7 @@ const Profile = () => {
     <ScrollView style={styles.container}>
       {/* Logo */}
       <View style={styles.logoContainer}>
-        <Text style={styles.logo}>SEAT</Text>
+        <Text style={styles.logo}>7th Seal</Text>
       </View>
 
       {/* Profile Card */}
