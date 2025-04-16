@@ -6,28 +6,18 @@ import { Link } from 'expo-router';
 
 const HomeScreen = () => {
     const handleItemClick = (item) => {
-
         console.log('Item clicked:', item);
-        
     };
 
     return (
         <ScrollView style={styles.container}>
             {/* Header */}
-            <View style={styles.header}>
-                <Text style={styles.logo}>7th Seal</Text>
-                <View style={styles.navbar}>
-                    <Text style={[styles.navItem, styles.activeNav]}>HOME</Text>
-                    <Text style={styles.navItem}>IN STOCK</Text>
-                    <Text style={styles.navItem}>NEW ARRIVALS</Text>
-                    <Text style={styles.navItem}>INSPO PAGE</Text>
-                </View>
-            </View>
+            <CustomHeader />
 
-           
+            {/* Welcome Text */}
             <Text style={styles.welcome}>WELCOME, USER.</Text>
 
-           
+            {/* Sale Banner */}
             <View style={styles.saleBanner}>
                 <Text style={styles.saleText}>FRIDAY SALE</Text>
                 <Text style={styles.saleSubtext}>ALL PIECES 15% OFF</Text>
@@ -37,9 +27,9 @@ const HomeScreen = () => {
             <View style={styles.section}>
                 <Text style={styles.sectionTitle}>RECENTLY VIEWED</Text>
                 <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                    {clothing.slice(0, 4).map((item, index) => (
-                        <Link href={`/screens/detailScreen?id=${item.id}`} asChild>
-                            <TouchableOpacity key={index} style={styles.productCard} onPress={() => handleItemClick(item)}>
+                    {clothing.slice(0, 4).map((item) => (
+                        <Link key={item.id} href={`/screens/detailScreen?id=${item.id}`} asChild>
+                            <TouchableOpacity style={styles.productCard} onPress={() => handleItemClick(item)}>
                                 <Image source={item.image} style={styles.productImage} />
                                 <Text style={styles.productPrice}>{item.price}</Text>
                                 <Text style={styles.productName}>{item.desc}</Text>
@@ -54,7 +44,7 @@ const HomeScreen = () => {
                 {/* Background Text Layer */}
                 <View style={styles.textOverlayContainer}>
                     {Array(6).fill().map((_, index) => (
-                        <Text key={index} style={[styles.upcomingText, index % 2 === 0 ? styles.mirroredText : null]}>
+                        <Text key={`drop-text-${index}`} style={[styles.upcomingText, index % 2 === 0 ? styles.mirroredText : null]}>
                             UPCOMING DROPS UPCOMING DROPS UPCOMING DROPS UPCOMING DROPS
                         </Text>
                     ))}

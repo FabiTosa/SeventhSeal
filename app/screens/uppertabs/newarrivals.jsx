@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, ScrollView, Dimensions } from 'react-native';
+import CustomHeader from '../../../components/CustomHeader'
 
 const newArrivals = () => {
   const items = [
@@ -11,31 +12,22 @@ const newArrivals = () => {
     { id: 6, image: require('../../../assets/images/blackknitted.png') },
     { id: 7, image: require('../../../assets/images/sweater3.png') },
   ];
-  
+
 
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContent}>
-        <View style={styles.logoContainer}>
-          <Text style={styles.logo}>7th Seal</Text>
-        </View>
-
-        <View style={styles.tabContainer}>
-          <Text style={styles.tab}>HOME</Text>
-          <Text style={styles.tab}>IN STOCK</Text>
-          <Text style={[styles.tab, styles.activeTab]}>NEW ARRIVALS</Text>
-          <Text style={styles.tab}>INSPO PAGE</Text>
-        </View>
+        <CustomHeader />
 
         {/* Product grid */}
         <View style={styles.grid}>
           {items.map((item) => (
-           <Image
-           key={item.id}
-           source={item.image}
-           style={styles.imageBox}
-         />
-         
+            <Image
+              key={item.id}
+              source={item.image}
+              style={styles.imageBox}
+            />
+
           ))}
         </View>
 

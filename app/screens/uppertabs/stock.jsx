@@ -1,4 +1,4 @@
-import { StyleSheet, Text, SafeAreaView, View, FlatList, Image, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, SafeAreaView, View, FlatList, Image, TouchableOpacity, ScrollView } from 'react-native'
 import React from 'react'
 import { Link } from 'expo-router';
 import clothing from "../../clothing.js";
