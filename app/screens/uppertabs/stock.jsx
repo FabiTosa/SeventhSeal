@@ -15,8 +15,8 @@ export default function Stock() {
             data={clothing}
             keyExtractor={(item) => item.id.toString()}
             numColumns={2}
-            contentContainerStyle={{ paddingBottom: 20 }} // Extra ruimte onderaan
-            scrollEnabled={false} // Laat ScrollView het scrollen regelen
+            contentContainerStyle={{ paddingBottom: 20 }}
+            scrollEnabled={false} 
             renderItem={({ item }) => (
               <Link href={`/screens/detailScreen?id=${item.id}`} asChild>
                 <TouchableOpacity style={styles.card}>

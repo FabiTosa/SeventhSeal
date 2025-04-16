@@ -4,14 +4,11 @@ import clothing from "../../clothing.js";
 
 const HomeScreen = () => {
     const handleItemClick = (item) => {
-        // Navigatie logica hier, bijvoorbeeld:
         console.log('Item clicked:', item);
-        // Hier kan je een navigatie functie aanroepen naar een detailpagina van het kledingstuk
     };
 
     return (
         <ScrollView style={styles.container}>
-            {/* Header */}
             <View style={styles.header}>
                 <Text style={styles.logo}>STEAL</Text>
                 <View style={styles.navbar}>

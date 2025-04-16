@@ -4,12 +4,10 @@ import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-nati
 const Profile = () => {
   return (
     <ScrollView style={styles.container}>
-      {/* Logo */}
       <View style={styles.logoContainer}>
         <Text style={styles.logo}>7th Seal</Text>
       </View>
 
-      {/* Profile Card */}
       <View style={styles.profileCard}>
         <Text style={styles.username}>USERNAME</Text>
         <Text style={styles.subText}>Premium member since 00/00/0000</Text>
@@ -50,7 +48,6 @@ const Profile = () => {
         <Text style={styles.logoutText}>Edit personal info</Text>
       </TouchableOpacity>
 
-      {/* Footer Buttons */}
       <TouchableOpacity style={styles.footerBtn}>
         <Text style={styles.footerText}>Switch to <Text style={{ fontWeight: 'bold' }}>premium</Text></Text>
       </TouchableOpacity>

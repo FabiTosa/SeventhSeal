@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
 
 const Home = () => {
-  const username = "User"; // Dit kan dynamisch worden geladen
+  const username = "User"; 
   const recentlyViewed = [
     { id: 1, name: 'Pink Graphic Tee', price: '€14,99', image: require('../../assets/images/pinkthee.png') },
     { id: 2, name: 'Black Sweatshirt', price: '€30,99', image: require('../../assets/images/blackknitted.png') },
